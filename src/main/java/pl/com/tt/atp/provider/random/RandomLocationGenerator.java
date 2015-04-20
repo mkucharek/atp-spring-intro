@@ -1,5 +1,7 @@
 package pl.com.tt.atp.provider.random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.com.tt.atp.measurement.Location;
 
 import java.util.Random;
@@ -7,6 +9,7 @@ import java.util.Random;
 /**
  * @author mkucharek
  */
+@Component
 public class RandomLocationGenerator {
 
     private final Random random;
@@ -16,6 +19,7 @@ public class RandomLocationGenerator {
     private Double longitudeUpperBound;
     private Double longitudeLowerBound;
 
+    @Autowired
     public RandomLocationGenerator(Random random) {
         this.random = random;
     }

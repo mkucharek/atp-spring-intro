@@ -1,15 +1,15 @@
 package pl.com.tt.atp;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.com.tt.atp.measurement.MeasurementProvider;
 import pl.com.tt.atp.provider.random.RandomLocationGenerator;
-import pl.com.tt.atp.provider.random.RandomMeasurementProvider;
 import pl.com.tt.atp.provider.random.RandomSpeedGenerator;
-
-import java.util.Random;
 
 /**
  * @author mkucharek
  */
+
 public class Application {
 
     public static final int DEFAULT_SPEED_UPPER_BOUND = 200;
@@ -25,19 +25,19 @@ public class Application {
         // TODO: get the configuration from properties file / command line ?
         // additional 50 lines or so..
 
-        Random rand = new Random();
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        RandomSpeedGenerator randomSpeedGenerator = new RandomSpeedGenerator(rand);
+        final RandomSpeedGenerator randomSpeedGenerator = ctx.getBean(RandomSpeedGenerator.class);
         randomSpeedGenerator.setSpeedUpperBound(DEFAULT_SPEED_UPPER_BOUND);
 
-        RandomLocationGenerator randomLocationGenerator = new RandomLocationGenerator(rand);
+        final RandomLocationGenerator randomLocationGenerator = ctx.getBean(RandomLocationGenerator.class);
         randomLocationGenerator.setLatitudeLowerBound(DEFAULT_LATITUDE_LOWER_BOUND);
         randomLocationGenerator.setLatitudeUpperBound(DEFAULT_LATITUDE_UPPER_BOUND);
         randomLocationGenerator.setLongitudeLowerBound(DEFAULT_LONGITUDE_LOWER_BOUND);
         randomLocationGenerator.setLongitudeUpperBound(DEFAULT_LONGITUDE_UPPER_BOUND);
 
-        MeasurementProvider measurementProvider =
-                new RandomMeasurementProvider(randomSpeedGenerator, randomLocationGenerator);
+
+        MeasurementProvider measurementProvider = ctx.getBean(MeasurementProvider.class);
 
         renderMeasurementsPeriodically(measurementProvider, DEFAULT_POLLING_INTERVAL);
 
