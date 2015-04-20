@@ -12,13 +12,13 @@ import java.util.Random;
  */
 public class Application {
 
-    public static final int SPEED_UPPER_BOUND = 200;
-    public static final double LATITUDE_LOWER_BOUND = -73.0;
-    public static final double LATITUDE_UPPER_BOUND = -72.0;
-    public static final double LONGITUDE_LOWER_BOUND = 41.0;
-    public static final double LONGITUDE_UPPER_BOUND = 42.0;
+    public static final int DEFAULT_SPEED_UPPER_BOUND = 200;
+    public static final double DEFAULT_LATITUDE_LOWER_BOUND = -73.0;
+    public static final double DEFAULT_LATITUDE_UPPER_BOUND = -72.0;
+    public static final double DEFAULT_LONGITUDE_LOWER_BOUND = 41.0;
+    public static final double DEFAULT_LONGITUDE_UPPER_BOUND = 42.0;
 
-    public static final long POLLING_INTERVAL = 1000;
+    public static final long DEFAULT_POLLING_INTERVAL = 1000;
 
     public static void main(String[] args) {
 
@@ -27,14 +27,19 @@ public class Application {
 
         Random rand = new Random();
 
-        RandomSpeedGenerator randomSpeedGenerator = new RandomSpeedGenerator(rand, SPEED_UPPER_BOUND);
-        RandomLocationGenerator randomLocationGenerator = new RandomLocationGenerator(rand,
-                LATITUDE_LOWER_BOUND, LATITUDE_UPPER_BOUND, LONGITUDE_LOWER_BOUND, LONGITUDE_UPPER_BOUND);
+        RandomSpeedGenerator randomSpeedGenerator = new RandomSpeedGenerator(rand);
+        randomSpeedGenerator.setSpeedUpperBound(DEFAULT_SPEED_UPPER_BOUND);
+
+        RandomLocationGenerator randomLocationGenerator = new RandomLocationGenerator(rand);
+        randomLocationGenerator.setLatitudeLowerBound(DEFAULT_LATITUDE_LOWER_BOUND);
+        randomLocationGenerator.setLatitudeUpperBound(DEFAULT_LATITUDE_UPPER_BOUND);
+        randomLocationGenerator.setLongitudeLowerBound(DEFAULT_LONGITUDE_LOWER_BOUND);
+        randomLocationGenerator.setLongitudeUpperBound(DEFAULT_LONGITUDE_UPPER_BOUND);
 
         MeasurementProvider measurementProvider =
                 new RandomMeasurementProvider(randomSpeedGenerator, randomLocationGenerator);
 
-        renderMeasurementsPeriodically(measurementProvider, POLLING_INTERVAL);
+        renderMeasurementsPeriodically(measurementProvider, DEFAULT_POLLING_INTERVAL);
 
     }
 

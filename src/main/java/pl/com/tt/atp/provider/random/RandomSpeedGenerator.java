@@ -9,10 +9,13 @@ public class RandomSpeedGenerator {
 
     private final Random random;
 
-    private final Integer speedUpperBound;
+    private Integer speedUpperBound;
 
-    public RandomSpeedGenerator(Random random, Integer speedUpperBound) {
+    public RandomSpeedGenerator(Random random) {
         this.random = random;
+    }
+
+    public void setSpeedUpperBound(Integer speedUpperBound) {
         this.speedUpperBound = speedUpperBound;
     }
 

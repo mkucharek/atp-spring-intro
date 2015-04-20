@@ -11,23 +11,29 @@ public class RandomLocationGenerator {
 
     private final Random random;
 
-    private final Double latitudeLowerBound;
-    private final Double latitudeUpperBound;
-    private final Double longitudeUpperBound;
-    private final Double longitudeLowerBound;
+    private Double latitudeLowerBound;
+    private Double latitudeUpperBound;
+    private Double longitudeUpperBound;
+    private Double longitudeLowerBound;
 
-    public RandomLocationGenerator(
-            Random random,
-            Double latitudeLowerBound,
-            Double latitudeUpperBound,
-            Double longitudeLowerBound,
-            Double longitudeUpperBound) {
-
+    public RandomLocationGenerator(Random random) {
         this.random = random;
+    }
+
+    public void setLatitudeLowerBound(Double latitudeLowerBound) {
         this.latitudeLowerBound = latitudeLowerBound;
+    }
+
+    public void setLatitudeUpperBound(Double latitudeUpperBound) {
         this.latitudeUpperBound = latitudeUpperBound;
-        this.longitudeLowerBound = longitudeLowerBound;
+    }
+
+    public void setLongitudeUpperBound(Double longitudeUpperBound) {
         this.longitudeUpperBound = longitudeUpperBound;
+    }
+
+    public void setLongitudeLowerBound(Double longitudeLowerBound) {
+        this.longitudeLowerBound = longitudeLowerBound;
     }
 
     public Location getRandomLocation() {
