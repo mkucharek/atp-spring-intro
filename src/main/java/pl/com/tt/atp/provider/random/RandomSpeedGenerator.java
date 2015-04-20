@@ -1,6 +1,7 @@
 package pl.com.tt.atp.provider.random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
@@ -13,6 +14,7 @@ public class RandomSpeedGenerator {
 
     private final Random random;
 
+    @Value("${provider.random.speed.bound.upper:200}")
     private Integer speedUpperBound;
 
     @Autowired
