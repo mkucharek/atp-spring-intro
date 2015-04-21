@@ -7,14 +7,18 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:0.4.1.RELEASE")
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
-    baseName = 'demo'
+    baseName = 'atp_spring_intro'
     version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
@@ -29,5 +33,6 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
