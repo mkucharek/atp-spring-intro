@@ -1,20 +1,25 @@
 package pl.com.tt.atp;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import pl.com.tt.atp.measurement.MeasurementProvider;
+
+import java.util.Random;
 
 /**
  * @author mkucharek
  */
 
+@SpringBootApplication
 public class Application {
 
     public static final long DEFAULT_POLLING_INTERVAL = 1000;
 
     public static void main(String[] args) {
 
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
 
         MeasurementProvider measurementProvider = ctx.getBean(MeasurementProvider.class);
 
@@ -31,6 +36,11 @@ public class Application {
                 return;
             }
         }
+    }
+
+    @Bean
+    public Random getRandom() {
+        return new Random();
     }
 
 }

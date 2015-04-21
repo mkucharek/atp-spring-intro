@@ -14,7 +14,7 @@ public class RandomSpeedGenerator {
 
     private final Random random;
 
-    @Value("${provider.random.speed.bound.upper:200}")
+    @Value("${provider.random.speed.bound.upper}")
     private Integer speedUpperBound;
 
     @Autowired
