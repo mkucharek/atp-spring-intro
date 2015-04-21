@@ -1,6 +1,25 @@
-apply plugin: 'java'
+buildscript {
+    ext {
+        springBootVersion = '1.2.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
 
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'demo'
+    version = '0.0.1-SNAPSHOT'
+}
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 version = '1.0'
 
 repositories {
@@ -8,6 +27,6 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter:1.2.3.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-web")
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
