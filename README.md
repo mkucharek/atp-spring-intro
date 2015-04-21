@@ -19,3 +19,7 @@ Either with a regular `java -jar` command
 Or using the spring-boot-gradle plugin:
 - `./gradlew bootRun` (`gradlew.bat bootRun` on Windows)
 
+## Useful links:
+- [Spring Initlzr](https://start.spring.io)
+- [Spring IO Guides](https://spring.io/guides)
+- [Spring Boot 1.2.3.RELEASE (latest) Reference Documentation](http://docs.spring.io/spring-boot/docs/1.2.3.RELEASE/reference/htmlsingle/)
