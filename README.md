@@ -1,4 +1,4 @@
-# Aplikacja na sterydach - wprowadzenie do Spring boot
+# Aplikacja na sterydach - wprowadzenie do Spring Boot
 
 This repository contains the source code produced during the live-coding session at ATP 2015.
 
