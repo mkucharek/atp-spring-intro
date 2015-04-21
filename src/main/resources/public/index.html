@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Measurement GUI</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.css"/>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-app="BootstrapApplication">
+
+<!-- Add your site or application content here -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="header col-lg-offset-3 col-lg-6">
+            <h3 class="text-muted">Welcome to Measurement Dashboard</h3>
+        </div>
+    </div>
+
+    <div class="row" ng-controller="MainCtrl">
+        <div class="col-lg-offset-1 col-lg-10">
+            <h2>Measurements</h2>
+
+            <p>
+                <button class="btn btn-primary" ng-model="autoUpdate.on"
+                        btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">Auto Update
+                </button>
+            </p>
+
+            <div class="panel panel-default">
+                <!-- Table -->
+                <table class="table" ng-init="toggleAutoUpdate()">
+                    <thead>
+                    <tr>
+                        <td>Speed</td>
+                        <td>Latitude</td>
+                        <td>Longitude</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="measurement in measurements">
+                        <td>{{measurement.speed}}</td>
+                        <td>{{measurement.location.latitude}}</td>
+                        <td>{{measurement.location.longitude}}</td>
+                    </tr>
+                    <tr ng-if="measurements.length == 0">
+                        <td>No measurements</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.js"></script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/mainController.js"></script>
+
+</body>
+</html>
