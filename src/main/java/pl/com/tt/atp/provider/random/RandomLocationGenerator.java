@@ -11,7 +11,7 @@ import java.util.Random;
  * @author mkucharek
  */
 @Component
-public class RandomLocationGenerator {
+class RandomLocationGenerator {
 
     private final Random random;
 

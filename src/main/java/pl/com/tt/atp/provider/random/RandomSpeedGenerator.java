@@ -10,7 +10,7 @@ import java.util.Random;
  * @author mkucharek
  */
 @Component
-public class RandomSpeedGenerator {
+class RandomSpeedGenerator {
 
     private final Random random;
 
