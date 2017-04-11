@@ -1,8 +1,5 @@
 package pl.com.tt.atp.provider.random;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import pl.com.tt.atp.measurement.Location;
 
 import java.util.Random;
@@ -10,24 +7,18 @@ import java.util.Random;
 /**
  * @author mkucharek
  */
-@Component
-class RandomLocationGenerator {
+public class RandomLocationGenerator {
 
     private final Random random;
 
-    @Value("${provider.random.latitude.bound.lower:-71.0}")
     private Double latitudeLowerBound;
 
-    @Value("${provider.random.latitude.bound.upper:-70.0}")
     private Double latitudeUpperBound;
 
-    @Value("${provider.random.longitude.bound.lower:41.0}")
     private Double longitudeUpperBound;
 
-    @Value("${provider.random.longitude.bound.upper:42.0}")
     private Double longitudeLowerBound;
 
-    @Autowired
     public RandomLocationGenerator(Random random) {
         this.random = random;
     }
